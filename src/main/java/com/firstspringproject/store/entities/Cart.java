@@ -77,4 +77,8 @@ public class Cart {
     public void clear(UUID cartId){
         items.clear();
     }
+
+    public boolean isEmpty(){
+        return items.isEmpty();
+    }
 }

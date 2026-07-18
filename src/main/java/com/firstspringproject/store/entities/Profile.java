@@ -2,8 +2,7 @@ package com.firstspringproject.store.entities;
 
 import java.time.LocalDate;
 
-import jakarta.annotation.Generated;
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

@@ -9,12 +9,8 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-//import com.firstspringproject.store.dtos.ProductSummary;
-//import com.firstspringproject.store.dtos.ProductSummaryDto;
-import com.firstspringproject.store.entities.Category;
 import com.firstspringproject.store.entities.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product> {
@@ -61,7 +57,6 @@ public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpec
     @Query("SELECT p FROM Product p WHERE p.category.id = :cid")
     List<Product> findProductsByCategoryId(@Param("cid") byte cid);
 
-    
     List<Product> findProductById(Long id);
 
     @Procedure("findProductsByPrice")

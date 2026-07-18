@@ -2,8 +2,6 @@ package com.firstspringproject.store.dto;
 
 import java.math.BigDecimal;
 
-import org.mapstruct.Mapping;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;

@@ -1,14 +1,13 @@
 package com.firstspringproject.store.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.firstspringproject.store.dto.ChangePasswordRequest;
 import com.firstspringproject.store.dto.RegisterUserRequest;
 import com.firstspringproject.store.dto.UpdateUserRequest;
 import com.firstspringproject.store.dto.UserDto;
-import com.firstspringproject.store.entities.User;
+import com.firstspringproject.store.entities.Role;
 import com.firstspringproject.store.mappers.UserMapper;
 import com.firstspringproject.store.repositories.UserRepository;
 
@@ -16,7 +15,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -24,9 +22,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -78,14 +74,14 @@ public class UserController {
     public ResponseEntity<?> registerUser(
             @Valid @RequestBody RegisterUserRequest request,
             UriComponentsBuilder uriBuilder) {
-        
-        if(userRepository.existsByEmail(request.getEmail())){
+
+        if (userRepository.existsByEmail(request.getEmail())) {
             return ResponseEntity.badRequest().body(
-                Map.of("email","Email already exist.")
-            );
+                    Map.of("email", "Email already exist."));
         }
         var user = userMapper.toEntity(request);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(Role.USER);
         userRepository.save(user);
 
         var userDto = userMapper.tDto(user);
@@ -141,5 +137,4 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    
 }

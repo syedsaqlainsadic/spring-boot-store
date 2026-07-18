@@ -3,8 +3,7 @@ package com.firstspringproject.store.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.annotation.Generated;
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

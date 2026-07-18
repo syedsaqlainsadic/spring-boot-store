@@ -1,8 +1,6 @@
 package com.firstspringproject.store.controllers;
 
-import java.net.URI;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +15,6 @@ import com.firstspringproject.store.repositories.ProductRepository;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import com.firstspringproject.store.repositories.CategoryRepository;
-import com.firstspringproject.store.entities.Category;
 
 import lombok.AllArgsConstructor;
 
@@ -106,8 +103,7 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(
-        @PathVariable Long id
-    ){
+            @PathVariable Long id) {
         var product = productRepository.findById(id).orElse(null);
 
         if (product == null) {

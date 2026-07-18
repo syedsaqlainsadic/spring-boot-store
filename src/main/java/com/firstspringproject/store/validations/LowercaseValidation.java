@@ -2,7 +2,6 @@ package com.firstspringproject.store.validations;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import lombok.val;
 
 public class LowercaseValidation implements ConstraintValidator<Lowercase,String> {
 

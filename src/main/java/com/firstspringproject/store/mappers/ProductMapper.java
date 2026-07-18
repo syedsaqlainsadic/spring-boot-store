@@ -5,7 +5,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 import com.firstspringproject.store.dto.ProductDto;
-import com.firstspringproject.store.entities.Category;
 import com.firstspringproject.store.entities.Product;
 
 @Mapper(componentModel = "spring")
