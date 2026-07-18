@@ -1,16 +1,9 @@
 spring:
   application:
     name: store
-  datasource:
-    url: jdbc:mysql://localhost:3306/store?createDatabaseIfNotExist=true
-    username: root
-    password: Syedsaqlain@16
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    show-sql: true
   jwt:
-    secret: MySuperSecretKeyForJWTAuthentication123456789
+    secret: ${JWT_SECRET}
     accessTokenExpiration: 7200
     refreshTokenExpiration: 604800
-server:
-  port: 8080
+  profiles:
+    active: dev
