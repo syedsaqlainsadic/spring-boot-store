@@ -14,23 +14,21 @@ create table addresses (
 );
 
 
-alter TABLE users add state varchar(255) not null ;
-
-
-alter table users drop column state ;
-
-alter table addresses add state varchar(255) not null ;
+ALTER TABLE addresses 
+ADD state VARCHAR(255) NOT NULL DEFAULT '';
 
 
 
-create table profiles (
-    id bigint PRIMARY KEY AUTO_INCREMENT,
-    bio VARCHAR(255) NOT NULL ,
-    phone_number VARCHAR(100) NOT NULL ,
-    date_of_birth DATE NOT NULL ,
-    loyalty_points INT NOT NULL 
+CREATE TABLE profiles (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    user_id BIGINT NOT NULL UNIQUE,
+    bio VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(100) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    loyalty_points INT NOT NULL,
+    CONSTRAINT fk_profile_user 
+        FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
 
 
 create table categories (
@@ -50,10 +48,7 @@ create table products (
 
 
 alter table Products 
-    add `description` TEXT NULL;
-
-alter Table Products 
-    modify `description` TEXT NOT NULL;
+    add `description` TEXT NOT NULL;
 
 
 CREATE TABLE wishlist (
@@ -70,7 +65,7 @@ CREATE TABLE wishlist (
 ALTER TABLE users 
 ADD UNIQUE (email);
 
-DELIMITER $$
+
 
 CREATE PROCEDURE findProductsByPrice(
     IN minPrice DECIMAL(10, 2),
@@ -80,7 +75,5 @@ BEGIN
     SELECT id, name, description, price , category_id FROM products
     WHERE price BETWEEN minPrice AND maxPrice 
     order by name;
-END$$
-
-DELIMITER ;
+END;
 
