@@ -47,7 +47,7 @@ create table products (
 );
 
 
-alter table Products 
+alter table products 
     add `description` TEXT NOT NULL;
 
 
@@ -66,6 +66,7 @@ ALTER TABLE users
 ADD UNIQUE (email);
 
 
+DELIMITER $$
 
 CREATE PROCEDURE findProductsByPrice(
     IN minPrice DECIMAL(10, 2),
@@ -75,5 +76,7 @@ BEGIN
     SELECT id, name, description, price , category_id FROM products
     WHERE price BETWEEN minPrice AND maxPrice 
     order by name;
-END;
+END$$
+
+DELIMITER; 
 

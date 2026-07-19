@@ -2,7 +2,7 @@ spring:
   application:
     name: store
   jwt:
-    secret: MySuperSecretKeyForJWTAuthentication123456789
+    secret: ${JWT_SECRET}
     accessTokenExpiration: 7200
     refreshTokenExpiration: 604800
   profiles:
