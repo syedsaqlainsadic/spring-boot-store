@@ -10,9 +10,8 @@ This project demonstrates how to design, develop, secure, and deploy a scalable 
 
 **Swagger UI**
 
-> https://YOUR-RAILWAY-URL.up.railway.app/swagger-ui/index.html
+> (https://store-api-production-1c2e.up.railway.app/swagger-ui/index.html#/order-controller)
 
-*(Replace with your deployed Railway URL.)*
 
 ---
 
@@ -346,7 +345,7 @@ These experiences provided valuable hands-on exposure to production-style backen
 
 # 👨‍💻 Author
 
-**Syed Saqlain Sadic**
+**Syed Saqlain S**
 
 Java Backend Developer
 
@@ -354,7 +353,7 @@ GitHub:
 https://github.com/syedsaqlainsadic
 
 LinkedIn:
-(Add your LinkedIn profile)
+https://www.linkedin.com/in/syed-saqlain-6719a81b6/
 
 ---
 
